@@ -1,8 +1,7 @@
-package fr.esgi.al.funprog
+package progfun
 
-import progfun.{GardeningEngine, InputParser}
+
 import scala.util.{Failure, Success, Try}
-import progfun.OutputEngine
 // import scala.util.{Failure, Success, Try}
 
 object Main extends App {
