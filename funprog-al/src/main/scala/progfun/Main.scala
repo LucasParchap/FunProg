@@ -1,11 +1,25 @@
-package fr.esgi.al.funprog
+package progfun
 
-@main
-def Main(): Unit = {
-  println("Ici le programme principal")
-  // Le code suivant ne compilera pas.
-  // var tmp = null;
-  // var tmp2 = if (tmp == 1) "yes" else 1
 
-  // println(s"tmp: $tmp, tmp2: $tmp2")
+import scala.util.{Failure, Success, Try}
+// import scala.util.{Failure, Success, Try}
+
+object Main extends App {
+  def execute(): Try[String] = {
+    InputParser.execute() match {
+      case Success(instructions) =>
+        GardeningEngine.execute(instructions) match {
+          case Failure(exception) => Failure(exception)
+          case Success(value)     => OutputEngine.execute(value)
+        }
+      case Failure(exception) => {
+        Failure(exception)
+      }
+    }
+  }
+
+  execute() match {
+    case Success(value)     => print(value)
+    case Failure(exception) => print(exception)
+  }
 }
